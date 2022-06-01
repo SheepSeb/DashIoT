@@ -4,7 +4,12 @@ import com.mtdl.pooapp.sensor.Sensor
 import com.mtdl.pooapp.sensor.SensorFactory
 import com.mtdl.pooapp.sensor.SensorType
 
-class ArduinoBoard : GenericBoard(0, "MyArduino", ArrayList(3), ConnexionType.WiFi, 100), Board {
+class ArduinoBoard : Board {
+    override var id : Int = 0
+    override var alias : String = "MyArduino"
+    override var sensorList : ArrayList<Sensor> = ArrayList(3)
+    override var connexionType: ConnexionType = ConnexionType.WiFi
+    override var batteryLevel : Int = 100
     override fun addSensor(s: Sensor) {
         sensorList.add(s)
     }
@@ -21,5 +26,8 @@ class ArduinoBoard : GenericBoard(0, "MyArduino", ArrayList(3), ConnexionType.Wi
         addSensor(humiditySensor!!)
         val lightSensor = sf.createSensor(SensorType.light)
         addSensor(lightSensor!!)
+    }
+    init {
+        createSensorList()
     }
 }
