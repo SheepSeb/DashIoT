@@ -3,11 +3,12 @@ package com.mtdl.pooapp.board
 import com.mtdl.pooapp.sensor.Sensor
 
 class BoardFactory {
-    fun createBoard(type: BoardType) : Board? {
+    fun createBoard(type: String) : Board? {
         return when(type) {
-            BoardType.Arduino -> ArduinoBoard()
-            BoardType.Microbit -> MicrobitBoard()
-            BoardType.RaspberryPi -> RaspberryPiBoard()
+            BoardType.Arduino.name -> ArduinoBoard()
+            BoardType.Microbit.name -> MicrobitBoard()
+            BoardType.RaspberryPi.name -> RaspberryPiBoard()
+            else -> null
         }
     }
 }

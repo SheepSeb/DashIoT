@@ -1,5 +1,6 @@
 package com.mtdl.pooapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -44,6 +45,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fab = findViewById(R.id.floating_action_button)
         fab.show()
+        fab.setOnClickListener{
+            val intent = Intent(this@MapsActivity, AddDeviceActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     /**

@@ -23,7 +23,7 @@ class TestActivity : AppCompatActivity() {
         lightSensor?.displayReading()*/
 
         var bf = BoardFactory()
-       var microbit = bf.createBoard(BoardType.Microbit)
+       var microbit = bf.createBoard(BoardType.Microbit.name)
         //microbit?.createSensorList()
         microbit!!.sensorList.get(0).updateReading(20.0)
         microbit?.getReadingForSensor(microbit!!.sensorList.get(0))

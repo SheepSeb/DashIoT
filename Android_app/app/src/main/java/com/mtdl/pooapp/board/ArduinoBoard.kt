@@ -4,8 +4,7 @@ import com.mtdl.pooapp.sensor.Sensor
 import com.mtdl.pooapp.sensor.SensorFactory
 import com.mtdl.pooapp.sensor.SensorType
 
-class ArduinoBoard : Board {
-    override var id : Int = 0
+class ArduinoBoard : Board() {
     override var alias : String = "MyArduino"
     override var sensorList : ArrayList<Sensor> = ArrayList(3)
     override var connexionType: ConnexionType = ConnexionType.WiFi

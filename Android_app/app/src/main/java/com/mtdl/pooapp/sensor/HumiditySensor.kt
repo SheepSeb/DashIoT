@@ -2,7 +2,8 @@ package com.mtdl.pooapp.sensor
 
 import android.util.Log
 
-class HumiditySensor(private var reading : Double) : Sensor {
+class HumiditySensor() : Sensor() {
+     override var reading : Double = 0.0
     override fun displayReading(): Double {
         Log.d("Humidity", reading.toString())
         return reading

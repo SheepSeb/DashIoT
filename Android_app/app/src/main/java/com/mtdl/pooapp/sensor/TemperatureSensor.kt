@@ -2,7 +2,8 @@ package com.mtdl.pooapp.sensor
 
 import android.util.Log
 
-class TemperatureSensor(private var reading : Double) : Sensor {
+class TemperatureSensor() : Sensor() {
+    override var reading : Double = 0.0
     override fun displayReading(): Double {
         Log.d("Temperature", reading.toString())
        return reading

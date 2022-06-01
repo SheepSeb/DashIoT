@@ -14,12 +14,8 @@
         android:theme="@style/Theme.POOApp">
         <activity
             android:name=".TestActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -38,8 +34,12 @@
 
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MapsActivity"
@@ -48,6 +48,11 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".AddDeviceActivity"
+            android:exported="false">
+
+        </activity>
 
     </application>
 

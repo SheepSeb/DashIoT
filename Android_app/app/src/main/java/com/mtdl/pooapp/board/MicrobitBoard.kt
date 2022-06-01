@@ -5,8 +5,7 @@ import com.mtdl.pooapp.sensor.Sensor
 import com.mtdl.pooapp.sensor.SensorFactory
 import com.mtdl.pooapp.sensor.SensorType
 
-class MicrobitBoard() : Board {
-   override var id : Int = 0
+class MicrobitBoard() : Board() {
     override var alias : String = "MyMicrobit"
     override var sensorList : ArrayList<Sensor> = ArrayList(2)
     override var connexionType: ConnexionType = ConnexionType.Bluetooth

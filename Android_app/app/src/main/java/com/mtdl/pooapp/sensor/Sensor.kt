@@ -1,10 +1,10 @@
 package com.mtdl.pooapp.sensor
 
-interface Sensor {
+open class Sensor {
+    open var reading : Double = 0.0
+    open fun displayReading():Double {return 0.0}
 
-    fun displayReading():Double
-
-    fun updateReading(new_reading : Double)
+    open fun updateReading(new_reading : Double) {}
 
 
 }

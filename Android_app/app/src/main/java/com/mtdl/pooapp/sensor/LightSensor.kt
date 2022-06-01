@@ -2,7 +2,8 @@ package com.mtdl.pooapp.sensor
 
 import android.util.Log
 
-class LightSensor(private var reading  : Double) : Sensor {
+class LightSensor() : Sensor() {
+    override var reading  : Double = 0.0
     override fun displayReading(): Double {
         Log.d("Light", reading.toString())
         return reading
