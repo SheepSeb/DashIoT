@@ -1,4 +1,4 @@
-package com.mtdl.pooapp
+package com.mtdl.pooapp.board
 
 enum class ConnexionType {
     Bluetooth, WiFi, Ethernet
