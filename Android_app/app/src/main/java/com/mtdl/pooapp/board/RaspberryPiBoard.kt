@@ -7,7 +7,7 @@ import com.mtdl.pooapp.sensor.SensorType
 class RaspberryPiBoard :  Board() {
     override var alias : String = "MyRaspberryPi"
     override var sensorList : ArrayList<Sensor> = ArrayList(2)
-    override var connexionType: ConnexionType = ConnexionType.Ethernet
+    override var connexionType: String = ConnexionType.Ethernet.name
     override var batteryLevel : Int = 100
     override fun addSensor(s: Sensor) {
         sensorList.add(s)
@@ -19,9 +19,9 @@ class RaspberryPiBoard :  Board() {
 
     override fun createSensorList() {
         val sf = SensorFactory()
-        val humiditySensor = sf.createSensor(SensorType.humidity)
+        val humiditySensor = sf.createSensor(SensorType.humidity.name)
         addSensor(humiditySensor!!)
-        val temperatureSensor = sf.createSensor(SensorType.temperature)
+        val temperatureSensor = sf.createSensor(SensorType.temperature.name)
         addSensor(temperatureSensor!!)
     }
     init {

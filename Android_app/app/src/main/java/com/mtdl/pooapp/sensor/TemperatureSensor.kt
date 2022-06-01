@@ -4,6 +4,7 @@ import android.util.Log
 
 class TemperatureSensor() : Sensor() {
     override var reading : Double = 0.0
+    override var type : SensorType? = SensorType.temperature
     override fun displayReading(): Double {
         Log.d("Temperature", reading.toString())
        return reading

@@ -1,13 +1,17 @@
 package com.mtdl.pooapp
 
 import android.content.ContentValues.TAG
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
+import com.google.android.gms.location.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,7 +27,6 @@ import com.mtdl.pooapp.sensor.Sensor
 import com.mtdl.pooapp.user.User
 import com.mtdl.pooapp.user.UserController
 import com.mtdl.pooapp.utils.DatabaseRef
-
 class AddDeviceActivity: AppCompatActivity() {
     val boardFactory = BoardFactory()
     val userController = UserController()
@@ -54,6 +57,11 @@ class AddDeviceActivity: AppCompatActivity() {
             var boardFactory = BoardFactory()
             var board = boardFactory.createBoard(textField.editText!!.text.toString())
             userController.addBoard(1, board)
+            val message = "Add"
+            val intent = Intent(this, MapsActivity::class.java).apply {
+                putExtra("EXTRA_MESSAGE", message)
+            }
+            startActivity(intent)
         }
     }
 
@@ -61,6 +69,5 @@ class AddDeviceActivity: AppCompatActivity() {
         super.onStart()
 
     }
-
 
 }

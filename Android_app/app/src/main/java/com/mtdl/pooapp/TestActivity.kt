@@ -17,7 +17,7 @@ class TestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test)
 
         var sf : SensorFactory = SensorFactory()
-        var lightSensor : Sensor? = sf.createSensor(SensorType.light)
+        var lightSensor : Sensor? = sf.createSensor(SensorType.light.name)
         /*lightSensor?.displayReading()
         lightSensor?.updateReading(12.5)
         lightSensor?.displayReading()*/

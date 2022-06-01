@@ -8,7 +8,7 @@ import com.mtdl.pooapp.sensor.SensorType
 class MicrobitBoard() : Board() {
     override var alias : String = "MyMicrobit"
     override var sensorList : ArrayList<Sensor> = ArrayList(2)
-    override var connexionType: ConnexionType = ConnexionType.Bluetooth
+    override var connexionType: String = ConnexionType.Bluetooth.name
     override var batteryLevel : Int = 100
 
     override fun addSensor(s: Sensor) {
@@ -22,9 +22,9 @@ class MicrobitBoard() : Board() {
 
     override fun createSensorList() {
         val sf  = SensorFactory()
-        var tempSensor : Sensor? = sf.createSensor(SensorType.temperature)
+        var tempSensor : Sensor? = sf.createSensor(SensorType.temperature.name)
         addSensor(tempSensor!!)
-        var lightSensor : Sensor? = sf.createSensor(SensorType.light)
+        var lightSensor : Sensor? = sf.createSensor(SensorType.light.name)
         addSensor(lightSensor!!)
     }
 

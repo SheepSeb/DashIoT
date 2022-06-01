@@ -1,8 +1,10 @@
 package com.mtdl.pooapp.user
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.util.Log
 import com.google.firebase.database.*
+import com.mtdl.pooapp.MapsActivity
 import com.mtdl.pooapp.board.Board
 import com.mtdl.pooapp.utils.DatabaseRef
 import com.mtdl.pooapp.utils.UserUtil
@@ -26,6 +28,7 @@ class UserController() : UserUtil {
         Board.id++
         dbRef.child("Users").child(userID.toString()).child("boardList").child(Board.id.toString()).setValue(user.boardList)
     }
+
 
     override fun deleteBoard(userID : Int, b: Board?) {
         user.boardList.remove(b!!)
