@@ -37,7 +37,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mtdl.pooapp.databinding.ActivityMapsBinding
+import com.mtdl.pooapp.sensor.SensorType
 import com.mtdl.pooapp.user.User
+import java.math.BigDecimal
+import java.math.RoundingMode
 import kotlin.random.Random
 
 
@@ -141,7 +144,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         updateLoc();
         // Add a marker in Sydney and move the camera
 
-
+        mMap!!.clear()
         val bucharest = LatLng(latitude, longitude)
         mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in Bucharest").snippet("0C"))?.showInfoWindow()
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
@@ -151,7 +154,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             indx +=1
          val pos = LatLng(b.latLng.first + Random.nextDouble(),b.latLng.second + Random.nextDouble());//LatLng(Random.nextDouble(), Random.nextDouble())//LatLng(b.latLng.first,b.latLng.second);
 
-          mMap.addMarker(MarkerOptions().position(pos).title("Marker "+indx))
+          mMap.addMarker(MarkerOptions().position(pos).title(b.alias).snippet(""+BigDecimal(b.getReadingForSensorType(SensorType.temperature)).setScale(2,RoundingMode.HALF_EVEN)+"C"))?.showInfoWindow()
 //            Toast.makeText(this,
 //                "board at " + b.sensorList.toString(),
 //                Toast.LENGTH_SHORT).show()

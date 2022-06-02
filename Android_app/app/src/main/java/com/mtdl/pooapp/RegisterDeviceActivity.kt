@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
+import com.mtdl.pooapp.board.ArduinoBoard
+import com.mtdl.pooapp.board.Board
+import com.mtdl.pooapp.board.MicrobitBoard
 import com.mtdl.pooapp.board.RaspberryPiBoard
 import com.mtdl.pooapp.databinding.ActivityRegisterDeviceBinding
 import com.mtdl.pooapp.user.User
@@ -27,8 +30,15 @@ class RegisterDeviceActivity : AppCompatActivity() {
 
         // viewBinding.registerAlias
        viewBinding.registerBtn.setOnClickListener {
-           val piBoard = RaspberryPiBoard()
-           piBoard.latLng = User.getCurentLocation()//Triple(50.0,50.0,50.0);
+           var piBoard : Board = RaspberryPiBoard()
+           if(User.userInstance().boardList.size == 1){
+               piBoard = ArduinoBoard()
+           }
+           if(User.userInstance().boardList.size == 2){
+               piBoard = MicrobitBoard()
+           }
+           piBoard.latLng = User.getCurentLocation()
+           piBoard.addSensors()//Triple(50.0,50.0,50.0);
            User.userInstance().addBoard(piBoard)
 
            UserController().addBoard(User.getUserId(),piBoard);

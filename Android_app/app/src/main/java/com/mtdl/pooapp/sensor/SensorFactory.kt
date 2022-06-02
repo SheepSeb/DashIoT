@@ -9,6 +9,14 @@ class SensorFactory {
             else -> null
         }
     }
+    fun createSensor(type: SensorType) : Sensor? {
+        return when(type) {
+            SensorType.humidity -> HumiditySensor()
+            SensorType.light -> LightSensor()
+            SensorType.temperature -> TemperatureSensor()
+            else -> null
+        }
+    }
 
 
 

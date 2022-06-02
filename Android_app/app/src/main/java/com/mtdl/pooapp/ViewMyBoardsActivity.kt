@@ -10,7 +10,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.gson.Gson
+//import com.google.gson.Gson
 import com.mtdl.pooapp.board.Board
 import com.mtdl.pooapp.sensor.Sensor
 import com.mtdl.pooapp.sensor.SensorFactory
@@ -20,7 +20,7 @@ import com.mtdl.pooapp.user.User
 class ViewMyBoardsActivity : AppCompatActivity() {
     var dbRef = FirebaseDatabase.getInstance().reference.database.reference
     var data : ArrayList<Board> = ArrayList()
-    val gson = Gson()
+    //val gson = Gson()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_my_boards)

@@ -12,6 +12,7 @@ class RaspberryPiBoard :  Board() {
     override var latLng: Triple<Double, Double, Double> = Triple(0.0,0.0,0.0);
 
 
+
     override fun addSensor(s: Sensor) {
         sensorList.add(s)
     }
