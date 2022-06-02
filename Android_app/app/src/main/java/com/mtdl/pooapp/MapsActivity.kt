@@ -147,9 +147,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var indx = 0;
         for ( b in User.userInstance().getBoards()){
             indx +=1
-       //  val pos = LatLng(b.latLng.first + Random.nextDouble(),b.latLng.second + Random.nextDouble());//LatLng(Random.nextDouble(), Random.nextDouble())//LatLng(b.latLng.first,b.latLng.second);
+         val pos = LatLng(b.latLng.first + Random.nextDouble(),b.latLng.second + Random.nextDouble());//LatLng(Random.nextDouble(), Random.nextDouble())//LatLng(b.latLng.first,b.latLng.second);
 
-       //    mMap.addMarker(MarkerOptions().position(pos).title("Marker "+indx))
+          mMap.addMarker(MarkerOptions().position(pos).title("Marker "+indx))
 //            Toast.makeText(this,
 //                "board at " + b.sensorList.toString(),
 //                Toast.LENGTH_SHORT).show()
@@ -192,8 +192,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun registerLocationListner() {
         // initialize location callback object
+        Toast.makeText(this@MapsActivity,"msg111111111", Toast.LENGTH_LONG).show()
         val locationCallback = object : LocationCallback() {
             override fun onLocationResult(p0: LocationResult) {
+                Toast.makeText(this@MapsActivity,"msg222222222", Toast.LENGTH_LONG).show()
                 onLocationChanged(p0!!.getLastLocation())
             }
 
@@ -201,6 +203,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // 4. add permission if android version is greater then 23
         if(Build.VERSION.SDK_INT >= 23 && checkPermission()) {
             LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest!!, locationCallback, Looper.myLooper()!!)
+            Toast.makeText(this,"msg", Toast.LENGTH_LONG).show()
+            User.setCurentLocation(latitude, longitude)
         }
     }
 

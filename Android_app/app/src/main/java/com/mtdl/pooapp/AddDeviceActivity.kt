@@ -60,7 +60,7 @@ class AddDeviceActivity: AppCompatActivity() {
     val userController = UserController()
     val currentUser = FirebaseAuth.getInstance().currentUser
     var currentUserEmail = ""
-    var user = User()
+   // var user = User()
     var key = 0
 
 
@@ -92,7 +92,7 @@ class AddDeviceActivity: AppCompatActivity() {
         dbRef.child("users").child("1").get()
         val addBoardButton = findViewById<Button>(R.id.add_board_btn)
         addBoardButton.setOnClickListener{
-            userController.user = user
+            userController.user = User.userInstance()
 
             var boardFactory = BoardFactory()
             var board = boardFactory.createBoard(textField.editText!!.text.toString())
