@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.mtdl.pooapp.user.User
 
 class LoginActivity: AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null

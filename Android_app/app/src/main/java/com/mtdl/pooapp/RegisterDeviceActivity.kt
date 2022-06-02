@@ -2,16 +2,12 @@ package com.mtdl.pooapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.mtdl.pooapp.board.RaspberryPiBoard
-import com.mtdl.pooapp.databinding.ActivityAddDeviceBinding
 import com.mtdl.pooapp.databinding.ActivityRegisterDeviceBinding
+import com.mtdl.pooapp.user.User
 
 
 class RegisterDeviceActivity : AppCompatActivity() {

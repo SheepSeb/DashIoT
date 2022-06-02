@@ -2,7 +2,6 @@ package com.mtdl.pooapp
 
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 
 
@@ -17,7 +16,6 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -39,6 +37,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mtdl.pooapp.databinding.ActivityMapsBinding
+import com.mtdl.pooapp.user.User
 import kotlin.random.Random
 
 
