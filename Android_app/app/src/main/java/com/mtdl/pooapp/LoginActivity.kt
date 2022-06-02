@@ -65,7 +65,7 @@ class LoginActivity: AppCompatActivity() {
                     val user = mAuth!!.currentUser
 
                     if (user != null) {
-                        User.userInstance().setFirebaseInstance(user)
+                       // User.userInstance().setFirebaseInstance(user)
 
                     };
 
