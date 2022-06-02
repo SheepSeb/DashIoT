@@ -10,7 +10,9 @@ open class Board() {
     open  var sensorList : ArrayList<Sensor> = ArrayList()
     open  var connexionType: String = ConnexionType.WiFi.name
      open var batteryLevel : Int = 100
+     open  var latLng: Triple<Double, Double, Double> = Triple(0.0,0.0,0.0)
      open fun addSensor(s: Sensor) {}
      open fun getReadingForSensor(s: Sensor):Double {return 0.0}
      open fun createSensorList() : Unit {}
+
 }

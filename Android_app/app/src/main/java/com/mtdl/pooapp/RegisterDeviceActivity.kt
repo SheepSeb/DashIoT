@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.mtdl.pooapp.board.RaspberryPiBoard
 import com.mtdl.pooapp.databinding.ActivityAddDeviceBinding
 import com.mtdl.pooapp.databinding.ActivityRegisterDeviceBinding
 
@@ -28,7 +30,15 @@ class RegisterDeviceActivity : AppCompatActivity() {
 
         // viewBinding.registerAlias
        viewBinding.registerBtn.setOnClickListener {
-           addSensors()
+           val piBoard = RaspberryPiBoard()
+           piBoard.latLng = Triple(50.0,50.0,50.0);
+           User.userInstance().addBoard(RaspberryPiBoard())
+           for(b in User.userInstance().getBoards()){
+//               Toast.makeText(this,
+//                   "board at " + b.sensorList.toString(),
+//                   Toast.LENGTH_SHORT).show()
+           }
+           returnToMaps()
        }
 
 
@@ -43,5 +53,11 @@ class RegisterDeviceActivity : AppCompatActivity() {
     fun addSensors(){
         //create new board
         ;
+    }
+
+    fun returnToMaps(){
+
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
     }
 }

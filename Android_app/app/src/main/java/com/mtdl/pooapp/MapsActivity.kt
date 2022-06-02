@@ -1,23 +1,36 @@
 package com.mtdl.pooapp
 
+
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+
 
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 
 import androidx.appcompat.app.AppCompatActivity
+
+
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+
 
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.gms.location.*
+
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,24 +39,54 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mtdl.pooapp.databinding.ActivityMapsBinding
+import kotlin.random.Random
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private lateinit var mMap: GoogleMap
+
+        private const val REQUEST_CODE_PERMISSIONS = 10
+
     }
+
+
     private lateinit var binding: ActivityMapsBinding
     lateinit var drawerLayout: DrawerLayout
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var fab: FloatingActionButton
 
+
     private var mLocationRequest: LocationRequest? = null
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  /* 10 secs */
     private val FASTEST_INTERVAL: Long = 2000 /* 2 sec */
 
-    private var latitude = 0.0
-    private var longitude = 0.0
+
 
     private var message : String? = null
+
+    protected var latitude: Double = 0.0// 44.439663
+    protected var longitude:Double = 0.0//26.096306
+
+
+
+
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+
+    private val REQUIRED_PERMISSIONS =
+        mutableListOf (
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ).apply {
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }.toTypedArray()
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = intent
@@ -78,6 +121,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
 
+       // locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?;
+
+
     }
 
 
@@ -90,13 +136,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        updateLoc();
         // Add a marker in Sydney and move the camera
-        val bucharest = LatLng(44.439663, 26.096306)
+        val bucharest = LatLng(latitude, longitude)
         mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in Bucharest"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
+
+        var indx = 0;
+        for ( b in User.userInstance().getBoards()){
+            indx +=1
+       //  val pos = LatLng(b.latLng.first + Random.nextDouble(),b.latLng.second + Random.nextDouble());//LatLng(Random.nextDouble(), Random.nextDouble())//LatLng(b.latLng.first,b.latLng.second);
+
+       //    mMap.addMarker(MarkerOptions().position(pos).title("Marker "+indx))
+//            Toast.makeText(this,
+//                "board at " + b.sensorList.toString(),
+//                Toast.LENGTH_SHORT).show()
+//            //mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
+        }
     }
 
     override fun onStart() {
@@ -190,5 +249,58 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val intent = Intent(this, AddDeviceActivity::class.java)
         startActivity(intent)
     }
+
+
+
+
+
+
+    fun updateLoc(){
+//
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                REQUIRED_PERMISSIONS,
+//                Companion.REQUEST_CODE_PERMISSIONS
+//            )
+//            return
+//        }
+//
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//
+//                    Toast.makeText(this,
+//                "fused location " ,
+//                Toast.LENGTH_SHORT).show()
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { location : Location? ->
+//                latitude = 40.00;
+//                longitude = 60.00
+//
+//
+//                if (location != null) {
+//                    latitude = location.getLatitude()
+//                    Toast.makeText(this,
+//                        "lat $latitude",
+//                        Toast.LENGTH_SHORT).show()
+//                };
+//                if (location != null) {
+//                    longitude = location.getLongitude()
+//                    Toast.makeText(this,
+//                        "lat $longitude",
+//                        Toast.LENGTH_SHORT).show()
+//                };
+//
+//            }
+//
+//
+    }
+
 
 }

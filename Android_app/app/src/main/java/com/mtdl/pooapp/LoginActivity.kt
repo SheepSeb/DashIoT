@@ -62,8 +62,15 @@ class LoginActivity: AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInUserWithEmail:success")
                     val user = mAuth!!.currentUser
+
+                    if (user != null) {
+                        User.userInstance().setFirebaseInstance(user)
+
+                    };
+
                     val intent = Intent(this@LoginActivity, MapsActivity::class.java)
                     startActivity(intent)
+
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
