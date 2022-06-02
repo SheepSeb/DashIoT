@@ -79,20 +79,20 @@ class LoginActivity: AppCompatActivity() {
     }
 
 
-
-        /*fun onclick(view: View) {
-            login(
-                findViewById<TextInputEditText>(R.id.edtUserName).text.toString(),
-                findViewById<TextInputEditText>(R.id.edtPassword).text.toString()
-            )
-        }
-
-        fun login(userName: String, password: String) {
-            if (userName == "name" && password == "1234") {
-                startActivity(Intent(this, HomeActivity::class.java))
-                Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
-            }
-        }*/
+//
+//        fun onclick(view: View) {
+//            login(
+//                findViewById<TextInputEditText>(R.id.edtUserName).text.toString(),
+//                findViewById<TextInputEditText>(R.id.edtPassword).text.toString()
+//            )
+//        }
+//
+//        fun login(userName: String, password: String) {
+//            if (userName == "name" && password == "1234") {
+//                startActivity(Intent(this, HomeActivity::class.java))
+//                Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show()
+//            } else {
+//                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }

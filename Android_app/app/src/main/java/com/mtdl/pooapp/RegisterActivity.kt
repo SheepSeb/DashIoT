@@ -30,7 +30,7 @@ class RegisterActivity: AppCompatActivity() {
         DatabaseRef.database = FirebaseDatabase.getInstance().reference.database.reference
         mAuth = FirebaseAuth.getInstance()
 
-        emailTextInputEditText = findViewById(R.id.register_email_text_field)
+        emailTextInputEditText = findViewById(R.id.register_type)
         pwTextInputEditText = findViewById(R.id.register_pw_text_field)
         firstNameEditText = findViewById(R.id.register_first_name_text_field)
         lastNameEditText = findViewById(R.id.register_last_name_text_field)

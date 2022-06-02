@@ -1,15 +1,19 @@
 package com.mtdl.pooapp
 
 import android.content.Intent
+
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
+
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
+
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -63,11 +67,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         fab = findViewById(R.id.floating_action_button)
+        fab.setOnClickListener{
+            addDevice();
+        }
         fab.show()
+
         fab.setOnClickListener{
             val intent = Intent(this@MapsActivity, AddDeviceActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
 
@@ -99,6 +109,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         startActivity(intent)
         return actionBarDrawerToggle.onOptionsItemSelected(item)
     }
+
     protected fun startLocationUpdates() {
         // initialize location request object
         mLocationRequest = LocationRequest.create()
@@ -173,4 +184,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+
+    fun addDevice(){
+        val intent = Intent(this, AddDeviceActivity::class.java)
+        startActivity(intent)
+    }
+
 }

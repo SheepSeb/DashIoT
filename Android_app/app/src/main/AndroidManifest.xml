@@ -3,6 +3,9 @@
     package="com.mtdl.pooapp">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -44,16 +47,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MapsActivity"
             android:exported="false"
+
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
+
+
         <activity
             android:name=".AddDeviceActivity"
-            android:exported="false"></activity>
+            android:exported="true"
+            android:label="@string/title_activity_add_device">
+
+        </activity>
+
+
+        <activity
+            android:name=".RegisterDeviceActivity"
+            android:exported="true"
+            android:label="@string/title_activity_add_device"/>
+
+
+
+
+
+
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
 
 </manifest>

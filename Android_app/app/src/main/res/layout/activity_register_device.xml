@@ -2,16 +2,19 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#cae9ff"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".RegisterDeviceActivity">
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_first_name_text_field"
+        android:id="@+id/register_alias"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:hint="First name"
+        android:hint="Alias"
         style="@style/LoginTextInputLayoutStyle"
         app:hintTextColor="@color/black"
         android:textColorHint="@color/black"
@@ -29,31 +32,7 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_last_name_text_field"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        style="@style/LoginTextInputLayoutStyle"
-        app:cornerRadius="10dp"
-        app:boxStrokeColor="@color/black"
-        android:hint="Last name"
-        app:hintTextColor="@color/black"
-        android:textColorHint="@color/black"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_type"
@@ -61,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:hint="Email"
+        android:hint="type"
         style="@style/LoginTextInputLayoutStyle"
         app:hintTextColor="@color/black"
         android:textColorHint="@color/black"
@@ -79,46 +58,46 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_pw_text_field"
+        android:id="@+id/register_location"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
+        android:hint="myLocation"
         style="@style/LoginTextInputLayoutStyle"
-        app:cornerRadius="10dp"
-        app:boxStrokeColor="@color/black"
-        android:hint="Password"
         app:hintTextColor="@color/black"
         android:textColorHint="@color/black"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        >
+        app:boxCornerRadiusTopStart="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
+        android:id="@+id/register_btn"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:id="@+id/register_btn"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="70dp"
-        android:text="Register"
-        style="?attr/materialButtonOutlinedStyle"
+        android:text="Register Device"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
+        app:rippleColor="@color/black"
         app:strokeColor="@color/black"
-        app:strokeWidth = "2dp"
-        app:rippleColor = "@color/black"
-        />
-
+        app:strokeWidth="2dp" />
 
 
 </LinearLayout>
