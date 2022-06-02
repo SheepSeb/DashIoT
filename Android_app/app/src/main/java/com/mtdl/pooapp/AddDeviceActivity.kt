@@ -96,7 +96,7 @@ class AddDeviceActivity: AppCompatActivity() {
 
             var boardFactory = BoardFactory()
             var board = boardFactory.createBoard(textField.editText!!.text.toString())
-            userController.addBoard(1, board)
+            userController.addBoard(User.getUserId(), board)
             val message = "Add"
             val intent = Intent(this, MapsActivity::class.java).apply {
                 putExtra("EXTRA_MESSAGE", message)

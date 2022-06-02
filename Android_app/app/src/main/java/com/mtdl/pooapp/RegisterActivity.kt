@@ -89,6 +89,6 @@ class RegisterActivity: AppCompatActivity() {
         uc.addUserToDb()
         var bf = BoardFactory()
         var b = bf.createBoard(BoardType.Microbit.name)
-        uc.addBoard(2, b)
+        uc.addBoard(User.getUserId(), b)
     }
 }

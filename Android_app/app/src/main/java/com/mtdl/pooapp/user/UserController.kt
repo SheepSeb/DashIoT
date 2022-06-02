@@ -10,7 +10,7 @@ import com.mtdl.pooapp.utils.DatabaseRef
 import com.mtdl.pooapp.utils.UserUtil
 
 class UserController() : UserUtil {
-    var user : User = User()
+    var user : User = User.userInstance()
     var userL : List<User>? = null
     var dbRef = FirebaseDatabase.getInstance().reference.database.reference
     override fun addBoard(userID : Int, b: Board?) {

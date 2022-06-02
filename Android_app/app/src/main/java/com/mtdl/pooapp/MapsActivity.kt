@@ -140,8 +140,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         updateLoc();
         // Add a marker in Sydney and move the camera
+
+
         val bucharest = LatLng(latitude, longitude)
-        mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in Bucharest"))
+        mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in Bucharest").snippet("0C"))?.showInfoWindow()
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
 
         var indx = 0;
@@ -192,7 +194,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun registerLocationListner() {
         // initialize location callback object
-        Toast.makeText(this@MapsActivity,"msg111111111", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this@MapsActivity,"msg111111111", Toast.LENGTH_LONG).show()
         val locationCallback = object : LocationCallback() {
             override fun onLocationResult(p0: LocationResult) {
                 Toast.makeText(this@MapsActivity,"msg222222222", Toast.LENGTH_LONG).show()
@@ -201,23 +203,65 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
         // 4. add permission if android version is greater then 23
-        if(Build.VERSION.SDK_INT >= 23 && checkPermission()) {
-            LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest!!, locationCallback, Looper.myLooper()!!)
-            Toast.makeText(this,"msg", Toast.LENGTH_LONG).show()
-            User.setCurentLocation(latitude, longitude)
+        if(Build.VERSION.SDK_INT >= 23 //&& checkPerm()//checkPermission()
+             ) {
+            Toast.makeText(this@MapsActivity,"msg333333333", Toast.LENGTH_LONG).show()
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest!!, locationCallback, Looper.myLooper()!!)
+                Toast.makeText(this,"msg", Toast.LENGTH_LONG).show()
+
+
+
+               // User.setCurentLocation(latitude, longitude)
+                return
+            }
+
         }
+
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { location : Location? ->
+//
+//                Toast.makeText(this,"msg444444444", Toast.LENGTH_LONG).show()
+//                latitude = 40.00;
+//                longitude = 60.00
+//
+//
+//                if (location != null) {
+//                    latitude = location.getLatitude()
+//                    Toast.makeText(this,
+//                        "lat $latitude",
+//                        Toast.LENGTH_SHORT).show()
+//                };
+//                if (location != null) {
+//                    longitude = location.getLongitude()
+//                    Toast.makeText(this,
+//                        "lat $longitude",
+//                        Toast.LENGTH_SHORT).show()
+//                };
+//
+//            }
     }
 
     //
     private fun onLocationChanged(location: Location) {
         // create message for toast with updated latitude and longitudefa
         var msg = "Updated Location: " + location.latitude  + " , " +location.longitude
+        Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
 
         // show toast message with updated location
         //Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
+
         Log.d("Message int", message!!)
         if(message!!.equals("Add")) {
             Log.d("MARKER", "Adding")
+            User.setCurentLocation(latitude, longitude)
             val location = LatLng(location.latitude, location.longitude)
             mMap!!.clear()
             mMap!!.addMarker(MarkerOptions().position(location).title("Current Location"))
@@ -256,53 +300,72 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-
+    fun checkPerm(): Boolean{
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                Companion.REQUEST_CODE_PERMISSIONS
+            )
+            return true;
+        }
+        return true
+    }
 
     fun updateLoc(){
-//
-//        if (ActivityCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                REQUIRED_PERMISSIONS,
-//                Companion.REQUEST_CODE_PERMISSIONS
-//            )
-//            return
-//        }
-//
-//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-//
-//                    Toast.makeText(this,
-//                "fused location " ,
-//                Toast.LENGTH_SHORT).show()
-//        fusedLocationClient.lastLocation
-//            .addOnSuccessListener { location : Location? ->
-//                latitude = 40.00;
-//                longitude = 60.00
-//
-//
-//                if (location != null) {
-//                    latitude = location.getLatitude()
-//                    Toast.makeText(this,
-//                        "lat $latitude",
-//                        Toast.LENGTH_SHORT).show()
-//                };
-//                if (location != null) {
-//                    longitude = location.getLongitude()
-//                    Toast.makeText(this,
-//                        "lat $longitude",
-//                        Toast.LENGTH_SHORT).show()
-//                };
-//
-//            }
-//
-//
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                Companion.REQUEST_CODE_PERMISSIONS
+            )
+            return
+        }
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+                    Toast.makeText(this,
+                "fused location " ,
+                Toast.LENGTH_SHORT).show()
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                latitude = 40.00;
+                longitude = 60.00
+                Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
+
+                if (location != null) {
+                    latitude = location.getLatitude()
+                    Toast.makeText(this,
+                        "lat $latitude",
+                        Toast.LENGTH_SHORT).show()
+                };
+                if (location != null) {
+                    longitude = location.getLongitude()
+                    Toast.makeText(this,
+                        "long $longitude",
+                        Toast.LENGTH_SHORT).show()
+                };
+
+                User.setCurentLocation(latitude,longitude);
+
+            }
+
+
     }
 
 
