@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "51142036716",
+    "project_id": "oopapp-348012",
+    "storage_bucket": "oopapp-348012.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51142036716:android:91845a575520441d8f29c9",
+        "android_client_info": {
+          "package_name": "com.mtdl.pooapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51142036716-2e5hcnjigk2t58ko807fteghatc1u0oa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQddtdi86A8YuxJX-UGPDI3UGfhJYcFuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51142036716-2e5hcnjigk2t58ko807fteghatc1u0oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
