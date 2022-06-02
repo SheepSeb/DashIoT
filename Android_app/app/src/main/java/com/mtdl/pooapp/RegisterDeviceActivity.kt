@@ -27,7 +27,19 @@ class RegisterDeviceActivity : AppCompatActivity() {
         viewBinding = ActivityRegisterDeviceBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.registerAlias.hint = "MyRaspberryPi"
+        viewBinding.registerType.hint= "RaspberryPi"
+        viewBinding.registerLocation.hint = User.getCurentLocation().first.toString() + " , " + User.getCurentLocation().second.toString()
 
+        if(User.userInstance().boardList.size == 1){
+            viewBinding.registerAlias.hint = "MyArduino"
+            viewBinding.registerType.hint = "Arduino"
+        }
+        if(User.userInstance().boardList.size == 2){
+
+            viewBinding.registerAlias.hint = "MyMicrobit"
+            viewBinding.registerType.hint = "Microbit"
+        }
         // viewBinding.registerAlias
        viewBinding.registerBtn.setOnClickListener {
            var piBoard : Board = RaspberryPiBoard()
@@ -39,7 +51,7 @@ class RegisterDeviceActivity : AppCompatActivity() {
            }
            piBoard.latLng = User.getCurentLocation()
            piBoard.addSensors()//Triple(50.0,50.0,50.0);
-           User.userInstance().addBoard(piBoard)
+          // User.userInstance().addBoard(piBoard)
 
            UserController().addBoard(User.getUserId(),piBoard);
            for(b in User.userInstance().getBoards()){

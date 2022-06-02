@@ -150,6 +150,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
 
         var indx = 0;
+        Toast.makeText(this,
+                ""+User.userInstance().boardList.size + " size",
+                Toast.LENGTH_SHORT).show()
+
         for ( b in User.userInstance().getBoards()){
             indx +=1
          val pos = LatLng(b.latLng.first + Random.nextDouble(),b.latLng.second + Random.nextDouble());//LatLng(Random.nextDouble(), Random.nextDouble())//LatLng(b.latLng.first,b.latLng.second);
@@ -200,7 +204,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //Toast.makeText(this@MapsActivity,"msg111111111", Toast.LENGTH_LONG).show()
         val locationCallback = object : LocationCallback() {
             override fun onLocationResult(p0: LocationResult) {
-                Toast.makeText(this@MapsActivity,"msg222222222", Toast.LENGTH_LONG).show()
+              //  Toast.makeText(this@MapsActivity,"msg222222222", Toast.LENGTH_LONG).show()
                 onLocationChanged(p0!!.getLastLocation())
             }
 
@@ -208,7 +212,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // 4. add permission if android version is greater then 23
         if(Build.VERSION.SDK_INT >= 23 //&& checkPerm()//checkPermission()
              ) {
-            Toast.makeText(this@MapsActivity,"msg333333333", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@MapsActivity,"msg333333333", Toast.LENGTH_LONG).show()
             if (ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_FINE_LOCATION
@@ -256,7 +260,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun onLocationChanged(location: Location) {
         // create message for toast with updated latitude and longitudefa
         var msg = "Updated Location: " + location.latitude  + " , " +location.longitude
-        Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
+       // Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
 
         // show toast message with updated location
         //Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
@@ -342,26 +346,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-                    Toast.makeText(this,
-                "fused location " ,
-                Toast.LENGTH_SHORT).show()
+                 //   Toast.makeText(this, "fused location " , Toast.LENGTH_SHORT).show()
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
                 latitude = 40.00;
                 longitude = 60.00
-                Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
+               // Toast.makeText(this,"msg5555555", Toast.LENGTH_LONG).show()
 
                 if (location != null) {
                     latitude = location.getLatitude()
-                    Toast.makeText(this,
-                        "lat $latitude",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "lat $latitude", Toast.LENGTH_SHORT).show()
                 };
                 if (location != null) {
                     longitude = location.getLongitude()
-                    Toast.makeText(this,
-                        "long $longitude",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "long $longitude", Toast.LENGTH_SHORT).show()
                 };
 
                 User.setCurentLocation(latitude,longitude);
